@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% block content %}
+{% load static %}
+<div class="index_welcome">
+    <div class="index_text">
+        <h2>Get Goods for Your Furry Friend</h2>
+        <h5>Find the Finest Pet Supplies at Your Fingertips</h5>
+        <a class="nav-link" href="{% url 'app:products' %}"><button type="button" class="btn btn-primary border-0 mt-5" style="background-color:#07d226;border-radius: 25px; padding: 2.5%;width: 150px;">Products</button></a>
+    </div>
+    <img src="{% static 'app/images/dog_image.svg' %}" width="400" height="500" alt="">
+
+    <a class="nav-link" href="{% url 'app:top_up' %}"><button type="button" class="btn btn-primary border-0 mt-5" style="background-color:#07d226;border-radius: 25px; padding: 2.5%;width: 150px;">Top-Up Balance</button></a>
+    </div>
+
+</div>  
+{% endblock content %}
+

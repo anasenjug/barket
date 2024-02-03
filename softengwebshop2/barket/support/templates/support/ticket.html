@@ -1,0 +1,30 @@
+{% extends 'support/base.html' %}
+{% block content %}
+{% load static %}
+<div class="products_header"><h2>Tickets</h2></div>
+<hr><center>
+<div class="">
+    <div class="product">
+        {% if request.user.is_staff %}
+        <h2>Support Ticket List</h2>
+        {% for ticket in tickets %}
+            <a href="{% url 'support:respond_to_ticket' ticket.id %}"><p>{{ ticket.subject }} - {{ ticket.user.username }} - {% if ticket.is_resolved %}Resolved{% else %}Open{% endif %}</p></a>
+            {% empty %}
+            <p>No tickets found</p>
+        {% endfor %}
+        {% else %}
+        <h2>Your Tickets</h2>
+        {% for ticket in tickets %}
+          <a href="{% url 'support:respond_to_ticket' ticket.id%}"><p>{{ ticket.subject }} - {{ ticket.created_at }} - {% if ticket.is_resolved %}Resolved{% else %}Open{% endif %}</p></a>
+          {% empty %}
+            <p>No tickets found</p>
+        {% endfor %}
+        {% endif %}
+        {% if not request.user.is_staff %}
+        <a class="nav-link" href="{% url 'support:create_ticket' %}"><button type="button" class="btn btn-primary border-0 mt-5" style="background-color:#07d226;border-radius: 25px; padding: 2.5%;width: 150px;">Create a ticket</button></a> 
+        {% endif %}
+    </div>
+   
+</div>
+</center>
+{% endblock content %}

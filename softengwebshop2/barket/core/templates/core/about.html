@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% block content %}
+{% load static %}
+<div class="products_header"><h2>About Us</h2></div>
+<hr>
+<div class="about">
+
+    <div class="welcome">
+        <img src="{% static 'app/images/about.svg' %}" width="300" height="250">
+        <div style="padding: 50px;">
+            Welcome to Barket, your online destination for all things pets! <br> At Barket, we believe that every pet deserves the best care, love, and attention.  <br>That's why we've created an online store that caters to all the needs of your furry friends.
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="about_us">
+        <div style="padding: 20px;">
+            <div style="text-align:center;"><h3>Our Mission</h3></div>
+            <p>Barket was founded with a clear mission - to provide pets and their owners with the highest quality products along with top-notch service. <br> Our passion for pets inspires us to constantly seek the latest and most innovative products <br> on the market to ensure the happiness and well-being of every member of your family.</p>
+        </div>
+     
+        <div style="padding: 20px;">
+            <div style="text-align:center;"><h3>What Sets Us Apart?</h3></div>
+            <p><strong>Wide Range of Products:</strong> Barket offers a diverse range of products for dogs, cats, birds, small mammals, fish, and reptiles.  <br> Whether you're looking for high-quality food, comfortable beds, toys that encourage play, or various other products, we have everything your pet needs.<br>
+                <strong>Quality:</strong> All our products are carefully selected to ensure top-notch quality.  <br>We collaborate with reputable brands that share our commitment to the health and happiness of pets. <br>   
+                <strong>Fast Delivery:</strong> We understand that you want to receive your pet products quickly.  <br>That's why we work with reliable delivery partners to ensure fast and secure delivery to your doorstep.</p>
+        </div>
+        <div style="padding: 20px;">
+            <div style="text-align:center;"><h3>Our Team</h3></div>
+            <p>Barket is comprised of passionate animal lovers and experts dedicated to providing the best products and advice. . <br>Our team is always available to answer your questions and provide support.</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="welcome">
+        <div style="padding: 50px;">
+            We want to express our gratitude to all our customers who entrust us with the care of their pets.  <br>Your trust is the foundation of our success, and we look forward to continuing our collaboration to create happy moments with your pets.<br>  
+            Welcome to Barket - where the love for pets becomes even more beautiful with quality products and service!</p>
+        </div>
+        <img src="{% static 'app/images/pets.svg' %}" width="300" height="250">
+    </div>
+
+</div>
+
+
+{% endblock content %}

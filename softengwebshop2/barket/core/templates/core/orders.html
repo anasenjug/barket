@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% block title %} Orders {% endblock title %}
+{% load static %}
+{% block content %}
+<div class="products_header"><h2>Orders</h2></div>
+<hr>
+<div class="products">
+    {% for item in order %}
+    <div class="product">
+        <div class="product_image">
+            <img src="{{ item.product.image }}" alt="" class="dogFoodImg">
+        </div>
+        <div class="product_info">
+            {% if request.user.is_staff %}
+               <p><strong>{{ item.user.username }}</strong></p>
+            {% endif %}
+            <h3>{{ item.product.name }}</h3>
+            <p>{{ item.product.description }}</p>
+            <div class="">
+                <p>Price: {{ item.product.price }} $</p>
+            </div>
+            <div class="cart-items">
+                <p>Quantity: {{ item.quantity }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>You don't have any orders.</p>
+    {% endfor %}
+</div>
+{% endblock content %}

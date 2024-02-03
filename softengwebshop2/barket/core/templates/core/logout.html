@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% block title %}Logout{% endblock title %}
+{% load static %}
+{% block content %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">You have been logged out</h5>
+
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'app:index' %}";
+        }, 100);
+    </script>
+
+{% endblock content %}

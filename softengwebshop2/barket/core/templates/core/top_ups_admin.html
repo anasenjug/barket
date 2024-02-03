@@ -1,0 +1,53 @@
+{% extends "core/base.html" %}
+{% block title %}Admin - Top Ups{% endblock title %}
+{% block content %}
+    <div class="container">
+        <h2>Top Ups</h2>
+
+        {% if applied_top_ups %}
+            <h3>Applied Top Ups</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Top-Up Code</th>
+                        <th>Date of Usage</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for top_up in applied_top_ups %}
+                        <tr>
+                            <td>{{ top_up.user }}</td>
+                            <td>{{ top_up.top_up_code.ref_code }}</td>
+                            <td>{{ top_up.timestamp }}</td>
+                            <td>${{ top_up.top_up_code.amount }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+        {% if available_top_ups %}
+            <h3>Available Top Ups</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Top-Up Code</th>
+                        <th>Expiration Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for top_up in available_top_ups %}
+                        <tr>
+                            <td>{{ top_up.ref_code }}</td>
+                            <td>{{ top_up.exp_date }}</td>
+                            <td>${{ top_up.amount }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock content %}

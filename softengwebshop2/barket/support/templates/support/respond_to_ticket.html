@@ -1,0 +1,70 @@
+{% extends 'support/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="products_header"><h2>Respond To Ticket</h2></div><hr>
+  <div class="products_header"><h3>Subject: <small>{{ ticket.subject }}</small></h3></div>
+
+  
+    {% for message in ticket_messages %}
+
+        {% if message.user == ticket.user %}
+        <div class="box">
+          <div class="center">
+            {% if request.user.is_staff %}
+            <div class="dialog1">
+              <div class="left-point"></div>
+              {% else %}
+              <div class="dialog2">
+                <div class="right-point"></div>
+                {% endif %}
+                    <div class="msg_container">
+                      <div class="from"><strong id="user">{{ message.user }}</strong></div>
+                      <div class="msg_content"> {{ message.content }}</div>
+                      <div class="msg_time">{{ message.timestamp }}</div> 
+                  </div>
+              </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="box">
+          <div class="center">
+            {% if request.user.is_staff %}
+            <div class="dialog2">
+              <div class="right-point"></div>
+              {% else %}
+              <div class = "dialog1">
+                <div class="left-point"></div>
+                {% endif %}
+                <div class="msg_container">
+                  <div class="from"><strong id="user">Support</strong></div>
+                  <div class="msg_content"> {{ message.content }}</div>
+                  <div class="msg_time">{{ message.timestamp }}</div>
+                </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+    {% endfor %}
+  
+
+  {% if not ticket.is_resolved %}
+    <form method="post">
+      {% csrf_token %}
+      <div class="msg_form">
+        <label for="content"><strong>Message:</strong></label>
+        {{ form.content }}
+        <div>
+          <button type="submit" class="btn btn-primary border-0 mt-2" style="background-color:#07d226;border-radius: 25px; ;width: 100%;">Send Message</button>
+          </form>
+          {% if request.user.is_staff %}
+              <a href="{% url 'support:resolve_ticket' ticket.id %}"><button type="button" class="btn btn-primary border-0 mt-2" style="background-color:#07d226;border-radius: 25px; width: 100%;">Resolve Ticket</button></a>
+          {% endif %}
+      </div>
+      </div>
+      
+  {% endif %}
+
+{% endblock %}

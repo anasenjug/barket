@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% block title %} Cart {% endblock title %}
+{% load static %}
+{% block content %}
+<div class="products_header"><h2>Cart</h2></div>
+<hr>
+<div class="products">
+    {% for item in cart_items %}
+    <div class="product">
+        <div class="product_image">
+            <img src="{{ item.product.image }}" alt="" class="dogFoodImg">
+        </div>
+        <div class="product_info">
+            <h3>{{ item.product.name }}</h3>
+            <p>{{ item.product.description }}</p>
+            <div class="">
+                <p>Price: {{ item.product.price }} $</p>
+            </div>
+            <div class="cart-items">
+                <p>Quantity: {{ item.quantity }}</p>
+                <a href="{% url 'app:remove_from_cart' item.id %}"><button type="button" class="btn btn-primary border-0" style="background-color:#07d226;border-radius: 25px; width: 100px; margin-bottom: 5px;">Remove</button></a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Your cart is empty.</p>
+    {% endfor %}
+</div>
+<div class="products">
+    {% if cart_items %}
+    <a href="{% url 'app:products' %}"><button type="button" class="btn btn-primary border-0 mb-5 mr-2" style="background-color:#07d226;border-radius: 25px; padding: 2.5%;width: 150px;">Continue Shopping</button></a>
+    <a href="{% url 'app:checkout' %}"><button type="button" class="btn btn-primary border-0 mb-5 ml-2" style="background-color:#07d226;border-radius: 25px; padding: 2.5%;width: 150px;">Checkout</button></a>
+    {% else %}
+    <a href="{% url 'app:products' %}"><button type="button" class="btn btn-primary border-0 mb-5 mr-2" style="background-color:#07d226;border-radius: 25px; padding: 2.5%;width: 150px;">Continue Shopping</button></a>
+    {% endif %}
+</div>
+<div class="products">
+    <p>Total: ${{ total_price }}</p>
+</div>
+{% endblock content %}

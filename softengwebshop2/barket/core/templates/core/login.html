@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+{% block title %} Login {% endblock title %}
+{% block content %}
+{% load static %}
+<div class="login-page">
+    <div class="form-content my-3 p-3">
+        <div class="container">
+            <div class="row justify-content-center " style="margin-bottom: 0;">
+                <div class="col-lg-5 ">
+                    <div class="mt-0 mb-3" >
+                        <div class="card-header  border-top border-dark border-left border-right justify-content-center ">
+                          <h2 class="font-weight-heavy my-1 text-center" >Login</h2>
+                        </div>
+                        {% if form.errors %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <div id="form_errors">
+                                    {% for key, value in form.errors.items %}
+                                        <strong>{{ value }}</strong>
+                                    {% endfor %}
+                                </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                        <div class="card-body border-right border-left border-dark border-bottom" style="margin-bottom: 0px;">
+                            <form method="POST"> 
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                            
+                                            <label class="small mb-1">Username</label>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                          <label class="small mb-1">Password</label>
+                                          {{ form.password }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                            {{ form.remember_me }}
+                                            <label> Remember me</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group mt-0 mb-1 text-center ">
+                                          <button name="login" class="btn btn-primary border-0 btn-lg mt-5" id="login" style="background-color:#07d226;">Log in</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="container">
+                            <div style="margin-left: 300px; margin-top: 0; ">
+                                <img src="{% static 'app/images/happy.svg' %}" width="400" height="500" alt="" >
+                            </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+     </div>
+
+     </div>
+
+</div>
+
+
+{% endblock content %}

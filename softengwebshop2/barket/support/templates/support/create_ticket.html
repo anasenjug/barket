@@ -1,0 +1,19 @@
+<!-- create_ticket.html -->
+{% extends 'support/base.html' %}
+
+{% block content %}
+
+  <div class="products_header"><h2>Create a Ticket</h2></div><hr>
+  <center>
+  <form method="post">
+    {% csrf_token %}
+    <div class="product">
+        <label for="name"><strong>Subject:</strong></label>
+        {{ form.subject }}
+        <br>
+        <button type="submit" class="btn btn-primary border-0 mt-2" style="background-color:#07d226;border-radius: 25px; ;width: 100%;">Submit Ticket</button>
+    </div>
+  </form>
+</center>
+  
+{% endblock %}

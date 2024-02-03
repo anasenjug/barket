@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% block title %} Register {% endblock title %}
+{% block content %}
+{% load static %}
+
+<div class="register_page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card my-3 p-3">
+                    <div class="card-header">
+                        <h2 class="font-weight-heavy my-1 text-center">Register</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="register_form" method="POST">
+                            {% csrf_token %}
+    
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="small mb-1">First Name</label>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="small mb-1">Last Name</label>
+                                    {{ form.last_name }}
+                                </div>
+                            </div>
+    
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="small mb-1">Username</label>
+                                    {{ form.username }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="small mb-1">Email</label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+    
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="small mb-1">Password</label>
+                                    {{ form.password1 }}
+                                    {{ form.errors.password }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="small mb-1">Confirm Password</label>
+                                    {{ form.password2 }}
+                                </div>
+                            </div>
+    
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-dark btn-lg border-0" style="background-color: #07d226;">Register</button>
+                            </div>
+                            {{ form.errors }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div style="margin-left: 300px; margin-top: 0; ">
+                <img src="{% static 'app/images/welcome.svg' %}" width="400" height="500" alt="" >
+            </div>
+        </div>
+    </div>
+    
+ 
+</div>
+
+{% endblock content %}
